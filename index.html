@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Poultry Farm — Profile</title>
+  <meta name="description" content="Poultry farm profile: mission, capacity, gallery, contact and WhatsApp order button." />
+  <style>
+    :root{
+      --brand:#2c7a0f;
+      --accent:#ffb703;
+      --muted:#6b7280;
+      --bg:#f8fafb;
+      --card:#ffffff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--bg); color:#0f172a; -webkit-font-smoothing:antialiased;
+    }
+    header{
+      background: linear-gradient(90deg,var(--brand), #1f5f10);
+      color:white; padding:28px 18px; text-align:center;
+      box-shadow:0 6px 18px rgba(15,23,42,0.12);
+    }
+    header h1{margin:0;font-size:1.9rem;letter-spacing:0.2px}
+    header p{margin:6px 0 0;color:rgba(255,255,255,0.9)}
+    nav{margin-top:12px}
+    nav a{color:rgba(255,255,255,0.95); text-decoration:none; font-weight:600; margin:0 10px; font-size:0.95rem}
+    nav a:hover{opacity:0.9; transform:translateY(-1px)}
+    main{max-width:1100px; margin:26px auto; padding:0 18px 60px}
+    .card{background:var(--card); border-radius:12px; padding:20px; box-shadow:0 6px 18px rgba(15,23,42,0.06); margin-bottom:18px}
+    h2{color:var(--brand); margin:0 0 10px; font-size:1.25rem}
+    p.lead{color:var(--muted); margin:0 0 12px}
+    ul{color:var(--muted); margin:8px 0 0; padding-left:18px}
+    /* Stats row */
+    .stats{display:flex;gap:12px;flex-wrap:wrap}
+    .stat{flex:1;min-width:140px;background:linear-gradient(180deg,rgba(255,255,255,0.9),#fbfffb);border-radius:10px;padding:12px}
+    .stat .num{font-weight:800;color:var(--brand);font-size:1.4rem}
+    .stat .label{font-size:0.86rem;color:var(--muted)}
+    /* Gallery */
+    .gallery{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px}
+    .gallery-item{position:relative; overflow:hidden; border-radius:10px; background:#eef2e9}
+    .gallery-item img{width:100%;height:160px;object-fit:cover;display:block;transition:transform .35s ease, filter .35s ease}
+    .gallery-item:hover img{transform:scale(1.06)}
+    .gallery-item .caption{position:absolute;left:8px;bottom:8px;padding:6px 8px;background:rgba(0,0,0,0.45);color:#fff;font-size:0.82rem;border-radius:6px}
+    /* Lightbox */
+    #lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.65);z-index:1200;padding:20px}
+    #lightbox img{max-width:95%;max-height:85vh;border-radius:8px;box-shadow:0 10px 40px rgba(2,6,23,0.6)}
+    #lightbox .close{position:absolute;right:24px;top:18px;color:#fff;background:transparent;border:0;font-size:28px;cursor:pointer}
+    /* WhatsApp floating button */
+    .whatsapp-float{position:fixed;right:20px;bottom:20px;width:64px;height:64px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 8px 24px rgba(37,211,102,0.2);z-index:1300;text-decoration:none}
+    .whatsapp-float svg{width:28px;height:28px;display:block}
+    .whatsapp-tooltip{position:fixed;right:96px;bottom:34px;background:#111827;color:#fff;padding:8px 10px;border-radius:8px;font-size:13px;display:none;z-index:1301}
+    /* Responsive tweaks */
+    @media (max-width:640px){
+      header h1{font-size:1.4rem}
+      .gallery-item img{height:140px}
+      .stat .num{font-size:1.1rem}
+    }
+    /* small animation */
+    .pulse{animation:pulse 2.5s infinite}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
+  </style>
+</head>
+<body>
+  <!--
+    Instructions:
+    - Save this file as index.html in the root of your GitHub repo.
+    - To replace sample images with your farm images: put images into assets/images/ and change the src attributes to "assets/images/your-image.jpg".
+    - To change WhatsApp number: update the href on the .whatsapp-float <a> tag (use format: https://wa.me/2206966648).
+  -->
+
+  <header>
+    <h1>(Your Poultry Name Here)</h1>
+    <p>Fresh Eggs • Healthy Birds • Reliable Supply</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#production">Production</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card" id="about">
+      <h2>Mission & Vision</h2>
+      <p class="lead"><strong>Mission:</strong> To produce healthy poultry products using modern farming practices while keeping prices affordable for communities and businesses.<br>
+      <strong>Vision:</strong> To become one of the leading poultry suppliers in the region, known for quality birds, hygienic eggs, and excellent customer service.</p>
+
+      <div class="stats" style="margin-top:12px">
+        <div class="stat">
+          <div class="num" id="stat-birds">3,500</div>
+          <div class="label">Total birds</div>
+        </div>
+        <div class="stat">
+          <div class="num" id="stat-eggs">1,200</div>
+          <div class="label">Avg eggs / day</div>
+        </div>
+        <div class="stat">
+          <div class="num" id="stat-rev">GMD 120,000</div>
+          <div class="label">Monthly revenue (sample)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>About Us</h2>
+      <p class="lead">(Your Poultry Name) is a growing poultry farm committed to supplying fresh eggs and healthy birds to individuals, restaurants, retailers, and local markets. We focus on best management practices, clean production, and customer satisfaction.</p>
+
+      <h3 style="margin-top:14px;margin-bottom:8px;color:var(--brand)">Current Production Capacity</h3>
+      <ul>
+        <li>Total number of birds: _______</li>
+        <li>Eggs produced per day/week/month: _______</li>
+        <li>Broilers ready for sale per batch: _______</li>
+        <li>Space capacity of the poultry building: _______</li>
+        <li>Availability: Wholesale & Retail</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Products & Services</h2>
+      <ul>
+        <li>Table eggs (wholesale & retail)</li>
+        <li>Broilers for meat</li>
+        <li>Local chicken (if available)</li>
+        <li>Bird manure for farmers</li>
+        <li>Door-to-door delivery (optional)</li>
+      </ul>
+    </section>
+
+    <section class="card" id="gallery">
+      <h2>Pictures & Videos — Sample Images (replace with your farm photos)</h2>
+      <p class="lead">Click any image to view larger. To replace images later, store your photos in <code>assets/images/</code> and change the <code>src</code> attributes below.</p>
+
+      <div class="gallery">
+        <!-- 20 sample images from Unsplash (replace these src with your assets images when ready) -->
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1577985051167-1962d1f5b6ae?q=80&w=1200&auto=format&fit=crop" alt="Eggs in tray"><div class="caption">Eggs in tray</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1611078489935-0cb964de46d5?q=80&w=1200&auto=format&fit=crop" alt="Free range chickens"><div class="caption">Free range chickens</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1602319672888-1756a22acfc2?q=80&w=1200&auto=format&fit=crop" alt="Hen in pen"><div class="caption">Hen in pen</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1573495612937-58f3d4f7b8d9?q=80&w=1200&auto=format&fit=crop" alt="Farm eggs"><div class="caption">Farm eggs</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1598966712747-e5c6d5c17940?q=80&w=1200&auto=format&fit=crop" alt="Broilers"><div class="caption">Broilers</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1614695639512-3d443cd66032?q=80&w=1200&auto=format&fit=crop" alt="Poultry worker"><div class="caption">Poultry worker</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600476898713-0b8b497635e2?q=80&w=1200&auto=format&fit=crop" alt="Baby chicks"><div class="caption">Baby chicks</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600843367394-adeb9c1ac9a4?q=80&w=1200&auto=format&fit=crop" alt="Feeding chickens"><div class="caption">Feeding chickens</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1601314190103-bc9be3d22b41?q=80&w=1200&auto=format&fit=crop" alt="Eggs and nests"><div class="caption">Eggs & nests</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1621070110073-7a3a0509b6c2?q=80&w=1200&auto=format&fit=crop" alt="Farm setting"><div class="caption">Farm setting</div></div>
+
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1602182211135-c2fefbb8519c?q=80&w=1200&auto=format&fit=crop" alt="Poultry house"><div class="caption">Poultry house</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1589923188900-89f98764d51c?q=80&w=1200&auto=format&fit=crop" alt="Little chicks"><div class="caption">Little chicks</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1596994137911-93d9a8f0cdb5?q=80&w=1200&auto=format&fit=crop" alt="Broiler farm"><div class="caption">Broiler farm</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1573497019940-1c21a248b9ec?q=80&w=1200&auto=format&fit=crop" alt="Egg baskets"><div class="caption">Egg baskets</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600797363244-1db5a293a61a?q=80&w=1200&auto=format&fit=crop" alt="Feed setup"><div class="caption">Feed setup</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1589927986089-358123789837?q=80&w=1200&auto=format&fit=crop" alt="Farmer and chickens"><div class="caption">Farmer & chickens</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600797363244-1db5a293a61a?q=80&w=1200&auto=format&fit=crop" alt="Poultry feed"><div class="caption">Poultry feed</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1577985051167-1962d1f5b6ae?q=80&w=1200&auto=format&fit=crop" alt="Eggs closeup"><div class="caption">Eggs closeup</div></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600476898713-0b8b497635e2?q=80&w=1200&auto=format&fit=crop" alt="Poultry pen"><div class="caption">Poultry pen</div></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Customer Testimonials</h2>
+      <div style="margin-top:10px;color:var(--muted)">
+        <blockquote style="margin:0 0 10px;padding:10px 14px;background:#fbfdf7;border-left:4px solid var(--brand);border-radius:8px">“Their eggs are fresh and affordable.”</blockquote>
+        <blockquote style="margin:0 0 10px;padding:10px 14px;background:#fbfdf7;border-left:4px solid var(--brand);border-radius:8px">“Best broilers I have bought, clean and well-fed.”</blockquote>
+        <blockquote style="margin:0;padding:10px 14px;background:#fbfdf7;border-left:4px solid var(--brand);border-radius:8px">“Reliable supplier, they deliver on time.”</blockquote>
+      </div>
+    </section>
+
+    <section class="card" id="contact">
+      <h2>Contact & Location</h2>
+      <p class="lead"><strong>Farm location:</strong> Wuli Jah Kunda (replace with real address)</p>
+      <p class="lead"><strong>Phone / WhatsApp:</strong> +220 696 6648</p>
+      <p class="lead"><strong>Email:</strong> info@yourpoultry.example</p>
+      <p class="lead"><strong>Social:</strong> Facebook / Instagram — @yourpoultrypage</p>
+
+      <h3 style="margin-top:12px;color:var(--brand)">Order & Delivery</h3>
+      <ul>
+        <li>Orders via Phone or WhatsApp</li>
+        <li>Delivery available within your service area</li>
+        <li>Payment: Cash / Mobile Money</li>
+      </ul>
+    </section>
+
+    <footer style="text-align:center;margin-top:12px;color:var(--muted);font-size:0.95rem">
+      © <span id="year"></span> (Your Poultry Name) — All rights reserved.
+    </footer>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-hidden="true">
+    <button class="close" aria-label="Close">&times;</button>
+    <img src="" alt="Large view">
+  </div>
+
+  <!-- WhatsApp floating button -->
+  <!-- Replace 2206966648 in the href below if you need another number -->
+  <a class="whatsapp-float pulse" id="waBtn" href="https://wa.me/2206966648?text=Hello%2C%20I%20am%20interested%20in%20your%20poultry%20products" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <!-- WhatsApp SVG icon -->
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+      <path fill="#fff" d="M20.52 3.48A11.95 11.95 0 0 0 12 0C5.373 0 .02 5.373.02 12 0 14.033.548 16.01 1.59 17.71L0 24l6.41-1.66A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.2-1.25-6.16-3.48-8.52z"/>
+      <path fill="#25D366" d="M16.32 11.06c-.23-.12-1.36-.67-1.57-.75-.21-.08-.36-.12-.51.12-.15.23-.59.75-.72.9-.13.15-.27.17-.5.06-.23-.12-.97-.36-1.84-1.12-.68-.6-1.14-1.34-1.28-1.57-.13-.23-.01-.35.1-.47.1-.1.23-.27.34-.4.11-.12.15-.2.23-.33.08-.13.03-.25-.02-.37-.05-.12-.51-1.23-.7-1.69-.18-.43-.36-.37-.5-.37-.13-.01-.28-.01-.43-.01-.15 0-.37.05-.56.25-.19.2-.72.7-.72 1.71 0 1 .74 1.97.84 2.11.1.15 1.45 2.34 3.51 3.19 2.06.86 2.06.57 2.43.54.37-.04 1.2-.49 1.37-.97.17-.48.17-.88.12-.97-.05-.08-.18-.12-.41-.23z"/>
+    </svg>
+  </a>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = lightbox.querySelector('img');
+    const closeBtn = lightbox.querySelector('.close');
+
+    document.querySelectorAll('.gallery-item img').forEach(img=>{
+      img.addEventListener('click', e=>{
+        lbImg.src = e.currentTarget.src + '&fit=crop';
+        lightbox.style.display = 'flex';
+        lightbox.setAttribute('aria-hidden','false');
+      });
+    });
+
+    closeBtn.addEventListener('click', ()=>{
+      lightbox.style.display = 'none';
+      lightbox.setAttribute('aria-hidden','true');
+      lbImg.src = '';
+    });
+
+    lightbox.addEventListener('click', (e)=>{
+      if(e.target === lightbox) {
+        lightbox.style.display = 'none';
+        lightbox.setAttribute('aria-hidden','true');
+        lbImg.src = '';
+      }
+    });
+
+    // small tooltip for WhatsApp - show on hover (desktop)
+    const waBtn = document.getElementById('waBtn');
+    const tooltip = document.createElement('div');
+    tooltip.className = 'whatsapp-tooltip';
+    tooltip.innerText = 'Chat with us on WhatsApp';
+    document.body.appendChild(tooltip);
+
+    waBtn.addEventListener('mouseenter', ()=>{
+      tooltip.style.display = 'block';
+      tooltip.style.right = (window.innerWidth - waBtn.getBoundingClientRect().left + 12) + 'px';
+      tooltip.style.bottom = (window.innerHeight - waBtn.getBoundingClientRect().top + 12) + 'px';
+    });
+    waBtn.addEventListener('mouseleave', ()=> tooltip.style.display = 'none');
+
+    // Note: If you want to use your own local images, place them in assets/images/
+    // then change the <img src="..."> links above to "assets/images/your-file.jpg".
+  </script>
+</body>
+</html>
